@@ -8,7 +8,7 @@ Consider a web application to maintain these blogs. The flow starts with creatin
 A user can write multiple blogs and update or delete its blogs. Each blog has some title, content and
 some (possibly multiple) images. The features of an image include its description, dimensions, etc.
 
-The schema of all the models can be found here.
+The schema of all the models can be found here. link: https://miro.com/app/board/uXjVPyE_1S0=/
 
 Your task is to complete the driver code for model, controller, service, and repositories related to the Blog,
  User, and Image. The functionalities for which logic is to be written are:
