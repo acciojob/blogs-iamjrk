@@ -1,36 +1,57 @@
 package com.driver.models;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table
-public class User
-{
+public class User {
+
+    @Column(name = "Id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String userName;
+    private Integer id;
+
+    @Column(name = "UserName")
+    private String username;
+
+    @Column(name = "Password")
     private String password;
-    private String firstName="test";
-    private String lastName="test";
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Blog> blogList=new ArrayList<>();
 
-    public User(String userName, String password)
-    {
-        this.userName = userName;
+    @Column(name = "FirstName")
+    private String firstName;
+
+    @Column(name = "LastName")
+    private String lastName;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Blog> blogList = new ArrayList<>();
+
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
-    }
-    public String getUserName() {
-        return userName;
+        this.firstName = "test";
+        this.lastName = "test";
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

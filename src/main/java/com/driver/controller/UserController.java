@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
     @Autowired
-    UserService userService;
+    public UserService userService;
+
     @PostMapping("/create")
     public ResponseEntity<Void> createUser(@RequestParam String username, @RequestParam String password) {
         // create a new user with given username and password
-        User user=userService.createUser(username,password);
+        userService.createUser(username, password);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -29,7 +31,7 @@ public class UserController {
     @PutMapping("/update")
     public ResponseEntity<Void> updateUser(@RequestParam Integer id, @RequestParam String password) {
         // update password of given user
-        User user=userService.updateUser(id,password);
+        userService.updateUser(id, password);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

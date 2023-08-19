@@ -7,28 +7,49 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Table
 @Entity
-public class Blog
-{
+@Table
+public class Blog {
+
+    @Column(name = "Id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+
+    @Column(name = "Title")
     private String title;
+
+    @Column(name = "Content")
     private String content;
+
+    @Column(name = "PublishDate")
     @CreationTimestamp
     private Date pubDate;
+
     @ManyToOne
     @JoinColumn
     private User user;
-    @OneToMany(mappedBy = "blog",cascade =CascadeType.ALL)
-    private List<Image>imageList=new ArrayList<>();
 
-    public Blog(String title, String content, User user) {
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
+    private List<Image> imageList = new ArrayList<>();
+    public Blog() {
+    }
+
+    public Blog(String title, String content, Date pubDate, User user) {
         this.title = title;
         this.content = content;
-
+        this.pubDate = pubDate;
         this.user = user;
+    }
+
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
